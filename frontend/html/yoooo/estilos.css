@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff0fe;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.tarjeta {
+  background: rgb(255, 209, 252);
+  padding: 20px;
+  border-radius: 12px;
+  border-color: #d635a6;
+  width: 250px;
+  text-align: center;
+}
+
+input {
+  padding: 8px;
+  width: 80%;
+  margin: 10px 0;
+  border: 1px solid #d635a6;
+  border-radius: 6px;
+}
+
+button {
+  background: #f16ac9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d635a6;
+}
+
+.resultado {
+  margin-top: 15px;
+  font-weight: bold;
+}

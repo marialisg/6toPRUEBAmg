@@ -1,0 +1,572 @@
+:root { /*variables de coloreeeshhh*/
+  --rosa: #c2185b;
+  --rosa-claro: #f8bbd0;
+  --fondo: #ffe4ec;
+  --texto: #4a1030;
+  --blanco: #ffffff;
+  --letra: sans-serif;
+  --espacio: 15px;
+
+  /* act 10: curva suavecita pa las animaciones */
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-family: var(--letra);
+  margin: 0;
+
+  /* estructura grid */
+  display: grid;
+  grid-template-columns: 1fr;
+
+  /* act 7: agregue el hero */
+  /* act 8: y los controles debajo */
+  grid-template-areas:
+    "header"
+    "hero"
+    "controles"
+    "main"
+    "footer";
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* act 6: link blanco pa que se lea */
+footer a {
+  color: var(--blanco);
+  font-weight: bold;
+}
+
+header, footer {
+  background-color: var(--rosa);
+  color: var(--blanco);
+  padding: var(--espacio);
+  text-align: center;
+}
+
+/* flexbox, distribucion */
+.nav {
+  background-color: var(--rosa-claro);
+  padding: var(--espacio);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--espacio);
+}
+
+.nav__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__sublista {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.nav__link, .nav__logo {
+  color: var(--texto);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* act 6: hover oscuro pa que se lea */
+.nav__link:hover, .nav__logo:hover {
+  color: var(--texto);
+  text-decoration: underline;
+}
+
+/* contenido */
+main {
+  width: 95%;
+  max-width: 1600px;
+  padding: var(--espacio);
+  margin: auto;
+}
+
+/* secciones */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  grid-template-areas:
+    "sobre"
+    "productos";
+
+  gap: var(--espacio);
+}
+
+section {
+  background-color: var(--blanco);
+  border: 2px solid #f48fb1;
+  border-radius: 15px;
+  padding: var(--espacio);
+}
+
+#seccion1 {
+  grid-area: sobre;
+}
+
+#seccion2 {
+  grid-area: productos;
+}
+
+#seccion3 {
+  grid-column: 1 / -1;
+}
+
+/* formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+input,button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--rosa-claro);
+  border-radius: 8px;
+}
+
+button {
+  background-color: var(--rosa);
+  color: var(--blanco);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a3154c;
+}
+
+/* act 6: pa ver donde estoy con el tab */
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--texto);
+  outline-offset: 3px;
+}
+
+/* act 6: foco blanco en el footer */
+footer a:focus-visible {
+  outline-color: var(--blanco);
+}
+
+/* act 6: bien escrito, verde */
+input:not([type="range"]):not([type="date"]):not(:placeholder-shown):valid {
+  border-color: #1b5e20;
+  box-shadow: 0 0 0 1px #1b5e20;
+  background-color: #d4f0d6;
+}
+
+/* act 6: mal escrito, rojo */
+input:not([type="range"]):not([type="date"]):not(:placeholder-shown):invalid {
+  border-color: #b00020;
+  box-shadow: 0 0 0 1px #b00020;
+  background-color: #ffd6dc;
+}
+
+/* act 6: la fecha no tiene placeholder, usa user-valid */
+input[type="date"]:user-valid {
+  border-color: #1b5e20;
+  box-shadow: 0 0 0 1px #1b5e20;
+  background-color: #d4f0d6;
+}
+
+input[type="date"]:user-invalid {
+  border-color: #b00020;
+  box-shadow: 0 0 0 1px #b00020;
+  background-color: #ffd6dc;
+}
+
+/* act 7: hero ocupa su lugar en el grid */
+.hero {
+  grid-area: hero;
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: var(--texto);
+}
+
+/* act 7: el video llena todo el hero */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* act 7: capa oscura encima del video */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(74, 16, 48, 0.6);
+}
+
+/* act 7: texto encima de todo */
+.hero__contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  padding: var(--espacio);
+  text-align: center;
+  color: var(--blanco);
+
+  /* act 10: entra subiendo cuando carga */
+  animation: aparecer 0.8s var(--curva) both;
+}
+
+/* act 7: boton del hero */
+.hero__boton {
+  display: inline-block;
+  background-color: var(--rosa);
+  color: var(--blanco);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+
+  /* act 10: subidita al pasar el mouse */
+  transition: transform 0.25s ease-out;
+}
+
+.hero__boton:hover {
+  background-color: #a3154c;
+  transform: translateY(-3px);
+}
+
+/* act 7: foco blanco pa que se vea sobre el video */
+.hero__boton:focus-visible {
+  outline-color: var(--blanco);
+}
+
+/* act 8: la barrita de controles debajo del video */
+.controles {
+  grid-area: controles;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--espacio);
+  padding: var(--espacio);
+  background-color: var(--rosa-claro);
+}
+
+/* act 8: le quito el width 100% que traen los botones del form */
+.control {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: bold;
+
+  /* act 10: subidita suave */
+  transition: transform 0.2s ease-out;
+}
+
+.control:hover {
+  transform: translateY(-2px);
+}
+
+/* act 10: se hunde un chin al presionar */
+.control:active {
+  transform: scale(0.95);
+}
+
+/* act 8: al principio se ven pausa y mute */
+.control .icono--play,
+.control .icono--sonido {
+  display: none;
+}
+
+/* act 8: si esta pausado, sale el play */
+.control.pausado .icono--pausa {
+  display: none;
+}
+
+.control.pausado .icono--play {
+  display: inline;
+}
+
+/* act 8: si tiene sonido, sale la bocina con ondas */
+.control.con-sonido .icono--mute {
+  display: none;
+}
+
+.control.con-sonido .icono--sonido {
+  display: inline;
+}
+
+/* act 9: iconos base */
+.icono {
+  width: 24px;
+  height: 24px;
+}
+
+/* act 9: las partes rellenas, el color sale de currentColor */
+.icono__relleno {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* act 9: las partes de linea, el color sale de currentColor */
+.icono__trazo {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* act 9: logo en el titulo */
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 56px;
+  height: auto;
+}
+
+/* act 9: colores del lazo por clase */
+.logo__lazo {
+  fill: var(--rosa-claro);
+  stroke: var(--blanco);
+  stroke-width: 2;
+}
+
+.logo__cinta {
+  fill: none;
+  stroke: var(--rosa-claro);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.logo__perla {
+  fill: var(--blanco);
+  stroke: var(--rosa-claro);
+  stroke-width: 1.5;
+}
+
+/* act 10: el lazo late cuando pasas el mouse */
+.titulo:hover .logo {
+  animation: latir 0.8s var(--curva);
+}
+
+/* act 9: flechita del footer */
+.footer__arriba {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icono--flecha {
+  width: 18px;
+  height: 18px;
+}
+
+/* act 9 y 10: tarjetas de favoritos */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--espacio);
+}
+
+.tarjeta {
+  position: relative;
+  background-color: var(--fondo);
+  border-radius: 15px;
+  padding: var(--espacio);
+  text-align: center;
+
+  /* act 10: backwards pa que el hover pueda usar transform despues */
+  animation: aparecer 0.6s var(--curva) backwards;
+  transition: transform 0.3s ease-out;
+}
+
+/* act 10: salen una por una */
+.tarjeta:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.tarjeta:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* act 10: la sombra va aparte y solo animo su opacity, asi no se traba */
+.tarjeta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 10px 25px rgba(194, 24, 91, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+}
+
+.tarjeta:hover::after {
+  opacity: 1;
+}
+
+/* act 9: icono grande de la tarjeta */
+.icono-tarjeta {
+  width: 48px;
+  height: 48px;
+}
+
+/* act 9: fill y stroke cambiados con css */
+.icono-tarjeta__forma {
+  fill: var(--rosa-claro);
+  stroke: var(--rosa);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  transition: fill 0.3s ease-out;
+}
+
+.icono-tarjeta__asa {
+  fill: none;
+  stroke: var(--rosa);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* act 9: en hover el icono se pone rosa fuerte */
+.tarjeta:hover .icono-tarjeta__forma {
+  fill: var(--rosa);
+}
+
+/* act 10: y flota */
+.tarjeta:hover .icono-tarjeta {
+  animation: flotar 1.2s ease-in-out infinite;
+}
+
+/* act 10: los keyframes, solo transform y opacity */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes latir {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% { transform: scale(0.95); }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 350px;
+}
+
+th, td {
+  border: 1px solid var(--rosa);
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--rosa-claro);
+}
+
+/* pa la tablet y el ñaifon */
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 1fr 2fr;
+
+    grid-template-areas:
+      "sobre productos";
+  }
+}
+
+/* pa la lapto */
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+/* como se va a ver en cada uno */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* nivel de experiencia rosita */
+input[type="range"] {
+  accent-color: var(--rosa);
+}
+
+/* act 10: scroll suave solo si no molesta */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* act 10: pa la gente que se marea, casi sin movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

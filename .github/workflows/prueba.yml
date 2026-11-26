@@ -1,0 +1,11 @@
+name: prueba
+on: 
+  workflow_dispatch:  # Allows manual triggering of this workflow
+jobs:
+  first-job:
+    runs-on: ubuntu-latest   # Runner environment provided by GitHub
+    steps:
+      - name: Print Greeting
+        run: echo "Hello World!"
+      - name: Print Goodbye 
+        run: echo "Done - Bye!"

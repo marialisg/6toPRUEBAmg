@@ -1,0 +1,17 @@
+name: Mi Sistema
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mi_sistema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ver mi equipo
+        run: |
+          echo "2do overflowwwwww"
+          whoami
+          date
+          ls -la

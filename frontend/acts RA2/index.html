@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perlisse Accessories</title>
+    <link rel="stylesheet" href="tokens.css">
+  </head>
+
+  <body>
+    <header id="inicio">
+      <!-- act 9: logo svg inline, sin xml ni width/height fijos -->
+      <h1 class="titulo">
+        <svg class="logo" viewBox="0 0 64 44" aria-hidden="true" focusable="false">
+          <path class="logo__lazo" d="M32 20C22 6 6 8 8 20C6 32 22 34 32 20Z"/>
+          <path class="logo__lazo" d="M32 20C42 6 58 8 56 20C58 32 42 34 32 20Z"/>
+          <path class="logo__cinta" d="M29 24L22 40M35 24L42 40"/>
+          <circle class="logo__perla" cx="32" cy="20" r="5"/>
+        </svg>
+        Perlisse Accessories
+      </h1>
+      <!-- menu -->
+      <nav class="nav">
+        <a class="nav__logo" href="#inicio">Inicio</a>
+
+        <!-- lista sin num -->
+        <ul class="nav__lista">
+          <li class="nav__item">
+            <a class="nav__link nav__link--activo" href="#seccion1">
+              Sobre nosotros
+            </a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#seccion2">
+              Productos
+            </a>
+            <ul class="nav__sublista">
+              <li class="nav__item">
+                <a class="nav__link" href="#tabla">
+                  Categorias
+                </a>
+              </li>
+              <!-- act 10: link a las tarjetas -->
+              <li class="nav__item">
+                <a class="nav__link" href="#favoritos">
+                  Favoritos
+                </a>
+              </li>
+              <li class="nav__item">
+                <a class="nav__link" href="#listas">
+                  Catalogo
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav__item">
+            <a class="nav__link" href="#seccion3">
+              Formulario
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- act 7: hero con video de fondo -->
+    <section class="hero" id="hero">
+      <!-- act 7: poster pa cuando el internet esta lento -->
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
+        <source src="video/hero.mp4" type="video/mp4">
+      </video>
+
+      <!-- act 7: capa oscura pa que se lea el texto -->
+      <div class="hero__overlay"></div>
+
+      <div class="hero__contenido">
+        <h2>Luce coquette siempre</h2>
+        <p>Cosméticos y accesorios pa ti</p>
+        <a class="hero__boton" href="#seccion2" onclick="sonar()">Ver productos</a>
+      </div>
+    </section>
+
+    <!-- act 8: botones aparte pa controlar el video, sirven con tab y enter -->
+    <div class="controles">
+      <button type="button" class="control" id="btn-pausa" onclick="pausar()">
+        <!-- act 9: icono pausa -->
+        <svg class="icono icono--pausa" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect class="icono__relleno" x="6" y="5" width="4" height="14" rx="1"/>
+          <rect class="icono__relleno" x="14" y="5" width="4" height="14" rx="1"/>
+        </svg>
+        <!-- act 9: icono play -->
+        <svg class="icono icono--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="icono__relleno" d="M8 5v14l11-7z"/>
+        </svg>
+        <span id="texto-pausa">Pausar video</span>
+      </button>
+
+      <!-- act 8: el video arranca muteado, por eso dice activar -->
+      <button type="button" class="control" id="btn-sonido" onclick="silenciar()">
+        <!-- act 9: bocina con la x -->
+        <svg class="icono icono--mute" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="icono__relleno" d="M3 9v6h4l5 4V5L7 9H3z"/>
+          <path class="icono__trazo" d="M16 9l5 6M21 9l-5 6"/>
+        </svg>
+        <!-- act 9: bocina con ondas -->
+        <svg class="icono icono--sonido" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="icono__relleno" d="M3 9v6h4l5 4V5L7 9H3z"/>
+          <path class="icono__trazo" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/>
+        </svg>
+        <span id="texto-sonido">Activar sonido</span>
+      </button>
+    </div>
+
+    <!-- act 8: el sonidito de los botones -->
+    <audio id="clic" src="audio/clic.wav" preload="auto"></audio>
+
+    <main>
+      <!-- seccion 1 -->
+      <section id="seccion1">
+        <h2>Sobre nosotros</h2>
+
+        <article>
+          <h3>Perlisse Accessories</h3>
+          <p>
+            Tienda de cosméticos, accesorios, cuidado personal y mucho más.
+          </p>
+
+          <h4>Lo que ofrecemos</h4>
+          <p>
+            Productos de excelente calidad para que te veas y te sientas bien coquette.
+          </p>
+        </article>
+      </section>
+
+      <!-- seccion 2 -->
+      <section id="seccion2">
+        <h2>Productos</h2>
+
+        <!-- act 2 -->
+        <!-- tabla -->
+        <article id="tabla">
+          <h3>Nuestras categorías</h3>
+
+          <div class="tabla-contenedor">
+            <table>
+              <thead>
+                <tr>
+                  <th rowspan="2">Categoría</th>
+                  <!-- juntar filas -->
+                  <th colspan="2">Productos estrella</th>
+                  <!-- juntar columnas -->
+                </tr>
+
+                <tr>
+                  <th>Nombre</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Cuidado personal</td>
+                  <td>EOS Shea Better Cashmere Vanilla Body Wash</td>
+                  <td>12</td>
+                </tr>
+
+                <tr>
+                  <td>Maquillaje</td>
+                  <td>e.l.f. Halo Glow Liquid Filter</td>
+                  <td>20</td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <td>Total</td>
+                  <td>2 productos</td>
+                  <td>32</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </article>
+
+        <!-- act 9 y 10: tarjetas con iconos svg y animacion -->
+        <article id="favoritos">
+          <h3>Favoritos de la casa</h3>
+
+          <div class="tarjetas">
+            <div class="tarjeta">
+              <!-- act 9: corazon -->
+              <svg class="icono-tarjeta" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path class="icono-tarjeta__forma" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>
+              </svg>
+              <h4>Cuidado personal</h4>
+              <p>Body wash y cremitas que huelen rico.</p>
+            </div>
+
+            <div class="tarjeta">
+              <!-- act 9: brillito -->
+              <svg class="icono-tarjeta" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path class="icono-tarjeta__forma" d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>
+              </svg>
+              <h4>Maquillaje</h4>
+              <p>Glow natural pa todos los días.</p>
+            </div>
+
+            <div class="tarjeta">
+              <!-- act 9: cartera -->
+              <svg class="icono-tarjeta" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path class="icono-tarjeta__forma" d="M5 8h14l-1 12H6z"/>
+                <path class="icono-tarjeta__asa" d="M9 8V6a3 3 0 0 1 6 0v2"/>
+              </svg>
+              <h4>Accesorios</h4>
+              <p>Lazos, perlas y detallitos coquette.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- lista ordenada -->
+        <article id="listas">
+          <h3>Algunas marcas que vendemos</h3>
+
+          <ol>
+            <li>Bath & Body Works</li>
+            <li>Victoria's Secret</li>
+            <li>EOS</li>
+            <li>e.l.f.</li>
+            <li>Sol de Janeiro</li>
+          </ol>
+        </article>
+      </section>
+
+      <!-- act 5 -->
+      <section id="seccion3">
+        <h2>Formulario de empleado</h2>
+        <!-- act 6: sin tabindex pa que el tab siga el orden -->
+        <form>
+      <label for="nombre">Nombre completo</label>
+    <input
+    type="text"
+    id="nombre"
+    name="nombre"
+    placeholder="Nombre Apellido"
+    required
+    title="Nombre completo"
+    >
+    
+    <label for="correo">Correo</label>
+<input
+  type="text"
+  id="correo"
+  name="correo"
+  placeholder="ejemplo@gmail.com"
+  pattern=".*@gmail\.com"
+  required
+  title="Solo se permiten correos Gmail"
+/>
+    <label for="telefono">Teléfono</label>
+    <input
+    type="tel"
+    id="telefono"
+    name="telefono"
+    placeholder="809-555-1234"
+    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    required
+    title="Formato 809-555-1234"
+    >
+    <label for="cedula">Cédula</label>
+    <input
+    type="text"
+    id="cedula"
+    name="cedula"
+    inputmode="numeric"
+    maxlength="13"
+    placeholder="000-0000000-0"
+    pattern="[0-9]{3}-[0-9]{7}-[0-9]"
+    required
+    title="Formato 000-0000000-0"
+    >
+    <label for="fecha">Fecha de nacimiento</label>
+    <input
+    type="date"
+    id="fecha"
+    name="fecha"
+    min="1990-01-01"
+    max="2010-12-31"
+    required
+    >
+    <label for="experiencia">Nivel de experiencia</label>
+    <input
+    type="range"
+    id="experiencia"
+    name="experiencia"
+    min="1"
+    max="10"
+    >
+
+  <!-- act 8: este tambien suena -->
+  <button type="submit" onclick="sonar()">
+    Enviar
+  </button>
+        </form>
+      </section>
+
+    </main>
+
+    <!-- pie de pag -->
+    <footer>
+      <p>Perlisse Accessories 2026</p>
+      <a class="footer__arriba" href="#inicio">
+        <!-- act 9: flechita pa arriba -->
+        <svg class="icono icono--flecha" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="icono__trazo" d="M12 19V5M6 11l6-6 6 6"/>
+        </svg>
+        Pa arriba
+      </a>
+    </footer>
+
+    <!-- act 8: con css solo no se puede pausar ni hacer sonar nada, por eso este chin de js -->
+    <script>
+      const video = document.querySelector('.hero__video');
+      const clic = document.querySelector('#clic');
+      const btnPausa = document.querySelector('#btn-pausa');
+      const btnSonido = document.querySelector('#btn-sonido');
+
+      // bajito pa no molestar a nadie
+      clic.volume = 0.2;
+      video.volume = 0.4;
+
+      // suena desde el inicio pa que sea al toque
+      function sonar() {
+        clic.currentTime = 0;
+        clic.play();
+      }
+
+      // pausa o sigue el video
+      function pausar() {
+        if (video.paused) {
+          video.play();
+          document.querySelector('#texto-pausa').textContent = 'Pausar video';
+        } else {
+          video.pause();
+          document.querySelector('#texto-pausa').textContent = 'Reanudar video';
+        }
+        btnPausa.classList.toggle('pausado', video.paused);
+        sonar();
+      }
+
+      // quita o pone el sonido del video
+      function silenciar() {
+        video.muted = !video.muted;
+        document.querySelector('#texto-sonido').textContent = video.muted ? 'Activar sonido' : 'Silenciar';
+        btnSonido.classList.toggle('con-sonido', !video.muted);
+        sonar();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Edad y nota</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <div class="tarjeta">
+    <h2>Edad</h2>
+    <input id="edad" type="number" placeholder="Escribe tu edad">
+    <button id="btnEdad">Comprobar</button>
+    <p id="resEdad" class="resultado"></p>
+  </div>
+
+  <div class="tarjeta">
+    <h2>Nota</h2>
+    <input id="nota" type="number" placeholder="Escribe tu nota">
+    <button id="btnNota">Comprobar</button>
+    <p id="resNota" class="resultado"></p>
+  </div>
+
+  <script>
+    // ej 1 edad
+    const inputEdad = document.querySelector("#edad");
+    const btnEdad = document.querySelector("#btnEdad");
+    const resEdad = document.querySelector("#resEdad");
+
+    btnEdad.addEventListener("click", () => {
+      const edad = Number(inputEdad.value);
+
+      if (edad >= 18) {
+        resEdad.textContent = "Puedes votar";
+      } else if (edad === 17) {
+        resEdad.textContent = "Pronto morch"; }
+        else {
+        resEdad.textContent = "No puedes votar";
+      }
+    });
+
+    // ej 2 nota
+    const inputNota = document.querySelector("#nota");
+    const btnNota = document.querySelector("#btnNota");
+    const resNota = document.querySelector("#resNota");
+
+    btnNota.addEventListener("click", () => {
+      const nota = Number(inputNota.value);
+
+      if (nota >= 90) {
+        resNota.textContent = "Excelente";
+      } else if (nota >= 70) {
+        resNota.textContent = "Aprobado";
+      } else {
+        resNota.textContent = "Reprobado";
+      }
+    });
+  </script>
+
+</body>
+</html>
